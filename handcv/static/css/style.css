@@ -1,0 +1,250 @@
+:root {
+    --bg-color: #0f172a;
+    --sidebar-bg: #1e293b;
+    --text-color: #f8fafc;
+    --primary-color: #3b82f6;
+    --accent-color: #8b5cf6;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 350px;
+    background-color: var(--sidebar-bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--glass-border);
+    overflow-y: auto;
+}
+
+.brand {
+    margin-bottom: 2rem;
+}
+
+.brand h1 {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.highlight {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.status-panel {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.75rem;
+    border-radius: 8px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #64748b;
+    transition: background-color 0.3s;
+}
+
+.status-indicator.active {
+    background-color: var(--success-color);
+    box-shadow: 0 0 10px var(--success-color);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--glass-border);
+}
+
+.stat-box h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+}
+
+.big-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-color);
+}
+
+.big-number.small {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    color: var(--primary-color);
+}
+
+/* Fingers List */
+.fingers-list h3 {
+    margin-bottom: 1rem;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.finger-card {
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.finger-card.extended {
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.finger-card.folded {
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.finger-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    align-items: center;
+}
+
+.finger-name {
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.finger-percent {
+    font-family: monospace;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.finger-state-mini {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    text-align: right;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.progress-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    width: 0%;
+    transition: width 0.2s ease;
+}
+
+.no-data {
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+    padding: 2rem 0;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    position: relative;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--danger-color);
+}
+
+.rec-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--danger-color);
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandCV Pro Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Stats Panel -->
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>HandCV <span class="highlight">Pro</span></h1>
+                <p>Gesture Analysis</p>
+            </div>
+
+            <div class="status-panel">
+                <div id="status-dot" class="status-indicator"></div>
+                <span id="status-text">Initializing...</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>Fingers</h3>
+                    <div class="big-number" id="finger-count">-</div>
+                </div>
+                <div class="stat-box">
+                    <h3>Hand</h3>
+                    <div class="big-number small" id="hand-side">-</div>
+                </div>
+            </div>
+
+            <div class="fingers-list">
+                <h3>Finger Flexion</h3>
+                <div id="fingers-container">
+                    <!-- Finger items injected by JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content / Video -->
+        <main class="main-content">
+            <div class="video-wrapper">
+                <img src="{{ url_for('video_feed') }}" alt="Live Feed">
+                <div class="video-overlay">
+                    <div class="rec-dot"></div>
+                    <span>LIVE</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
